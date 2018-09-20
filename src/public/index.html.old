@@ -1,0 +1,83 @@
+<!-- index.html -->
+<!doctype html>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="TinaApp">
+
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Optimize mobile viewport -->
+    <title>Christina</title>
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/angular-flash.min.css">
+    <!-- load bootstrap -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <!-- load jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
+    <!-- <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.1.0.js"></script> -->
+    <!--      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script> -->
+    <script src="js/core.js"></script>
+    <script src="js/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script type="text/javascript" src="js/angular-flash.min.js"></script>
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+
+<body ng-controller="mainController">
+    <div>
+        <header>
+            <nav class="navbar navbar-default">
+                <div ng-if="isAuthenticated()">
+                    <div class="container">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="#!/"> Preview Site</a></li>
+                            <li><a href="#!/images"> Images</a></li>
+                            <li><a href="#!/clips"> Clips</a></li>
+                            <li><a href="#!/movies"> Movies</a></li>
+                            <li><a href="#!/films"> Film</a></li>
+                            <li><a href="#!/theater"> Theater</a></li>
+                            <li><a href="#!/contacts"> Contact</a></li>
+                            <li><a href="#!" ng-click="logout()"> Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="navbar-header">
+                        <a ng-click="open()" class="navbar-brand" href="/">Christina Ferraro</a>
+                    </div>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="#!"><i class="fa fa-home"></i> Photos</a></li>
+                        <li><a href="#!about"><i class="fa fa-shield"></i> Reels</a></li>
+                        <li><a href="#!con"><i class="fa fa-comment"></i> Resume</a></li>
+                        <li><a href="#!con"><i class="fa fa-comment"></i> Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <div ng-if="isAuthenticated()" class="container">
+        Totally logged in
+    </div>
+    <div class="container">
+        <flash-message duration="5000"></flash-message>
+    </div>
+    <div class="container">
+        <div ng-if="!isAuthenticated()">
+            <ng-include src="'views/trial.html'"></ng-include>
+        </div>
+        <div ng-view></div>
+    </div>
+    <div class='container'>
+        <h4>Theater</h4>
+        <ul>
+            <li ng-repeat="x in myData.theater">{{x.title}} {{x.role}} {{x.companyDirector}}</li>
+        </ul>
+    </div>
+</body>
+
+</html>

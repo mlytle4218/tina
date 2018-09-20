@@ -1,0 +1,22 @@
+<!-- contact.html -->
+    <div class="jumbotron text-center">
+        <h1>Theater</h1>
+
+        <p>{{ message }}</p>
+    </div>
+    <div class='container'>
+    <h4>Theater</h4>
+
+        <div ng-repeat="theater in myData.theater">
+            <input type="text" name="{{theater.title}]" ng-model="theater.title">
+            <input type="text" name="{{theater.role}]" ng-model="theater.role">
+            <input type="text" name="{{theater.companyDirector}]" ng-model="theater.companyDirector">
+            <datepicker>
+                <input type="text" name="{{theater.dateEnd}]" ng-model="theater.dateEnd | date:'yyyy-MM-dd'">
+            </datepicker>
+            <input type="text" name="{{theater.dateStart}]" ng-model="theater.dateStart">
+            <button ng-click="save(myData.theater, $index, 'theater')">Save</button>
+            <button ng-click="delete(myData.theater, $index, 'theater')">Delete</button>
+        </div>
+        <button ng-click="add()">Add New</button>
+    </div>
